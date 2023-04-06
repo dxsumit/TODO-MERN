@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Auth from './components/auth';
 import Home from './components/Home';
+import AddTask from './components/AddTask';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
 
           <Route exact path='/' element={ <Auth /> } />
           <Route path='/home' element={ <Home/> } />
+          <Route path='/add' element={ <AddTask/> } />
 
         </Routes>
       
