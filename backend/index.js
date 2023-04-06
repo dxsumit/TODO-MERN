@@ -4,6 +4,7 @@ const {connectToDB} = require('./DB/connect');
 const cors = require('cors')
 
 const auth = require('./routes/auth');
+const task_CRUD = require('./routes/task_CRUD');
 
 require("dotenv").config();
 
@@ -16,7 +17,8 @@ app.use(express.urlencoded({extended: false}));
 app.use(express.json({limit: "60mb"}));   // allows express to use json in body..
 app.use(cors());    // allow cross origin resource sharing..
 
-app.use("/auth/api", auth);
+app.use("/api/auth", auth);
+app.use("/api/task", task_CRUD);
 
 ( async () => {
 

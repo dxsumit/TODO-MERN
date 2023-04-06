@@ -15,12 +15,14 @@ const TaskSchema = new mongoose.Schema({
         max: 9,
         required: true
     },
-    priority: {
+    cancelled: {
         type: Boolean,
-        required: [true, "priority can not be empty."],
+        default: false,
+        required: [true, "cancelled can not be empty."],
     },
     completed: {
         type: Boolean,
+        default: false,
         required: [true, "completed can not be empty."],
     }
 }) 
