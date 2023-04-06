@@ -1,10 +1,11 @@
 
-import { useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const Home = () => {
+const Home = ({authState}) => {
 
+    const navigate = useNavigate();
     const location = useLocation();
 
     const [counter, setCounter] = useState(0);
@@ -27,6 +28,9 @@ const Home = () => {
 
         }
         
+        if(!location.state){
+            navigate('/');
+        }
         
         getAllTasks();
 
@@ -82,28 +86,17 @@ const Home = () => {
     }
 
     return (
-        // <div classNameName="flex flex-col items-center h-screen">
 
-            // <h1 classNameName="text-xl text-gray-800 mt-5"> hello, <span classNameName="font-bold text-blue-600"> {location.state.email}{location.state.domain} </span>  </h1>
-        
-        // </div>
-
-        
-
-        
         <div className="flex justify-center min-h-screen bg-gray-900">
-
-            {/* <h1 classNameName="text-xl text-gray-800 mt-5"> hello, <span classNameName="font-bold text-blue-600"> {location.state.email}{location.state.domain} </span>  </h1> */}
-            
 
             <div className="col-span-12">
                 <div className="overflow-auto lg:overflow-visible ">
 
                 <div className="flex justify-between pt-3 pb-1 px-3">
-                    <h1 className="text-base md:text-xl text-white mt-5"> hello, <span className="font-bold text-teal-400"> Sumit </span> <span className="text-sm ml-2"> pending tasks: {pendingTasks} </span>  </h1>
+                    <h1 className="text-base md:text-xl text-white mt-5"> hello, <span className="font-bold text-teal-400"> {location.state ? location.state.email : ""} </span> <span className="text-sm ml-2"> pending tasks: {pendingTasks} </span>  </h1>
 
-                    <button onClick={() => console.log('Add task.') } 
-                        className="focus:outline-none text-white bg-teal-500 hover:bg-teal-400 focus:ring-2 font-medium rounded-lg text-sm px-4">
+                    <button onClick={() => navigate('/add') } 
+                        className="focus:outline-none text-white bg-teal-500 hover:bg-teal-400 font-medium rounded-lg text-xs px-1 md:px-4 md:text-sm">
                         ADD Task
                     </button>
                 </div>

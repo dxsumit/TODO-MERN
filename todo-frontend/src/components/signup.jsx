@@ -41,7 +41,7 @@ const Signup = () => {
         
         <div>
 
-            <h1 className='font-bold text-2xl mb-8 w-5/6 lg:text-2xl pt-2' > Create account with YOUR-ZONE </h1>
+            <h1 className='font-bold text-xl md:text-2xl mb-8 w-5/6 lg:text-2xl pt-2' > Create account with YOUR-ZONE </h1>
             
 
             <form onSubmit={handleSubmit(onSubmit)} >

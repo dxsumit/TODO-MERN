@@ -17,7 +17,7 @@ const Auth = () => {
                 
                 {/* <div className="md:w-full lg:w-1/2 mx-2"> */}
                     
-                    <div className='flex flex-col mt-24 w-1/3'>
+                    <div className='flex flex-col mt-24 w-11/12 md:w-2/3 lg:w-1/3'>
 
 
                         <div className="flex w-full justify-between border-t-2 border-blue-500 rounded-md font-medium">

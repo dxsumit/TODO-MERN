@@ -49,7 +49,7 @@ const AddTask = () => {
         
         <div className="flex flex-col h-screen">
             <div className="flex justify-center sm:h-full">
-                <div className='flex flex-col mt-24 w-1/3'> 
+                <div className='flex flex-col mt-24 w-11/12 md:w-2/3 lg:w-1/3'> 
 
 
                 <h1 className='font-bold text-2xl mb-8 w-5/6 lg:text-2xl pt-2' > Add task to your list </h1>
@@ -57,30 +57,31 @@ const AddTask = () => {
                 <form onSubmit={handleSubmit(onSubmit)} >
 
                     <div className="flex my-2 bg-gray-100 rounded-lg py-3 pl-4">
-                        <input id="name" name="name" className="appearance-none w-11/12 bg-transparent text-gray-700 focus:outline-none" placeholder="name" {...register("name", {
-                            required: "name is required.",
-                            minLength: {
-                                value: 3,
-                                message: "name should be at-least 3 characters."
+                    
+                        <textarea id="task" name="task" className="appearance-none w-11/12 bg-transparent text-gray-700 focus:outline-none" placeholder="enter your task" {...register("task", {
+                            required: "task is required.",
+                            maxLength: {
+                                value: 150,
+                                message: "task should be max 150 characters."
                             }
 
-                        })} />
+                        })}/>
 
 
                         <div className="cut"></div>
                     
                     </div>
 
-                    {errors.name && (
-                        <p className="errorMsg" style={{color:'#f22952', fontSize:'13px'}} >{errors.name.message}</p>
+                    {errors.task && (
+                        <p className="errorMsg" style={{color:'#f22952', fontSize:'13px'}} >{errors.task.message}</p>
                     )}
 
 
                     <div className="flex my-2 bg-gray-100 rounded-lg py-3 pl-4 mb-3">
-                        <input id="age" name="age" type="number" className="appearance-none w-11/12 bg-transparent text-gray-700 focus:outline-none" placeholder="age" {...register("age", {
-                            required: "age is required.",
-                            min: {value: 16, message: "age must be at least 16"},
-                            max: {value: 150, message: "age must be no more than 150"},
+                        <input id="priority" name="priority" type="number" className="appearance-none w-11/12 bg-transparent text-gray-700 focus:outline-none" placeholder="priority" {...register("priority", {
+                            required: "priority is required.",
+                            min: {value: 1, message: "priority must be at least 1"},
+                            max: {value: 9, message: "priority must be no more than 9"},
 
                         })} />
 
@@ -89,58 +90,29 @@ const AddTask = () => {
                     
                     </div>
 
-                    {errors.age && (
-                        <p className="errorMsg" style={{color:'#f22952', fontSize:'13px'}} >{errors.age.message}</p>
+                    {errors.priority && (
+                        <p className="errorMsg" style={{color:'#f22952', fontSize:'13px'}} >{errors.priority.message}</p>
                     )}
 
                     
 
-                    <div className="flex my-2 bg-gray-100 rounded-lg py-1 pl-4 mb-3 ">
-                        <input id="email" name="email" className="appearance-none bg-transparent text-gray-700 focus:outline-none" type="text" placeholder="email" {...register("email", {
-                                required: true
-                            })} />
+                    <div className="flex items-center py-3">
+                        <input id="completed" type="checkbox" name="completed" className="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300 focus:none" {...register("completed")} />
+                        <label htmlFor="disabled-radio-2" className="ml-2 text-sm font-medium text-gray-400 dark:text-gray-500">Completed</label>
 
-
-                        <div className="relative ml-auto mr-1">
-                            <select name="domain" id="domain" className="text-sm block appearance-none w-full bg-white text-gray-700 py-2.5 px-4 pr-8 rounded-lg leading-tight focus:outline-none focus:bg-white md:text-md md:min-w-[140px]" {...register("domain", {
-                                required: true
-                            })}>
-                                <option>@yz.ac.in</option>
-                                <option>@iiitdm.ac.in</option>
-                                <option>@gmail.com</option>
-                            </select>
-                            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                                <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-                            </div>
-                        </div>
-
-                            
                         <div className="cut"></div>
 
                     </div>
-                    {errors.email && errors.email.type === "required" && (
-                        <p className="errorMsg" style={{color:'#f22952', fontSize:'13px'}} >email is required.</p>
-                    )}
 
 
-                    <div className="flex my-2 bg-gray-100 rounded-lg py-3 pl-4 mb-3">
-                        <input id="password" name="password" className="appearance-none w-11/12 bg-transparent text-gray-700 focus:outline-none" placeholder="password" {...register("password", {
-                            required: "Password is required.",
-                            minLength: {
-                                value: 6,
-                                message: "Password should be at-least 6 characters."
-                            }
-
-                        })} />
-
+                    <div className="flex items-center py-3">
+                        <input id="cancelled" type="checkbox" name="cancelled" className="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300 focus:none" {...register("cancelled")} />
+                        <label htmlFor="disabled-radio-2" className="ml-2 text-sm font-medium text-gray-400 dark:text-gray-500">Cancelled</label>
 
                         <div className="cut"></div>
-                    
+
                     </div>
 
-                    {errors.password && (
-                        <p className="errorMsg" style={{color:'#f22952', fontSize:'13px'}} >{errors.password.message}</p>
-                    )}
 
 
                     <label></label>
@@ -148,20 +120,12 @@ const AddTask = () => {
                     
                 </form>
 
-                <button type="text" className="w-full text-white bg-yellow-600 p-3 rounded-md mt-2"> Back </button>
+                <button onClick={() => navigate(-1)} type="text" className="w-full text-white bg-yellow-600 p-3 rounded-md mt-2"> Back </button>
 
                 </div>
 
             </div>
         </div>
-
-
-        // <div className="w-3/5">
-
-            
-            
-
-        // </div>
 
     )
 }

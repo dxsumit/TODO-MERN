@@ -34,8 +34,8 @@ const Login = () => {
             await axios.post(`${baseURL}/api/auth/login`, {email, password});
             // console.log(res.data);
             reset();
-
-            navigate('/home', {state: {...formData} })
+            
+            navigate('/home', {state: {email} })
 
         }
         catch(err){
@@ -51,7 +51,7 @@ const Login = () => {
         
         <div>
 
-            <h1 className='font-bold text-2xl mb-8 w-1/2 lg:text-2xl pt-2' > Login to the YOUR-ZONE </h1>
+            <h1 className='font-bold text-xl md:text-2xl mb-8 w-1/2 lg:text-2xl pt-2' > Login to the YOUR-ZONE </h1>
         
             <form onSubmit={handleSubmit(onSubmit)} >
 

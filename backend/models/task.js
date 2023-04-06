@@ -6,7 +6,7 @@ const TaskSchema = new mongoose.Schema({
     task: {
         type: String,
         required: [true, "task can not be empty."],
-        maxlength: [100, "task is more than 150 characters."],
+        maxlength: [150, "task is more than 150 characters."],
         trim: true
     },
     priority: {
